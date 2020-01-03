@@ -18,14 +18,13 @@ powershell 'mvn clean package'
 archiveArtifacts 'target/*.war'
 }
 }
-//stage ('Deploy To Prod'){
- ///input{
-   // message "Do you want to proceed for production deployment?"
-  //}
-  //  steps {
-    //           sh 'echo "Deploy into Prod"'
-         //     }
-      //  }
+stage ('Deploy To Prod'){
+input{
+ message "Do you want to proceed for production deployment?"
+}
+ steps {
+        sh 'echo "Deploy into Prod"'
+ }  }
 stage('Deploy') {
 steps{
 echo "Deploying"
