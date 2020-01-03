@@ -8,7 +8,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
 }
 stage('Build') {
 tools {
-jdk 'JDK Kit'
+jdk 'JDK8'
 maven 'Maven3'
 }
 steps {
@@ -16,15 +16,18 @@ powershell 'java -version'
 powershell 'mvn -version'
 powershell 'mvn clean package'
 archiveArtifacts 'target/*.war'
+
 }
 }
 stage ('Deploy To Prod'){
-input{
- message "Do you want to proceed for production deployment?"
-}
- steps {
-        sh 'echo "Deploy into Prod"'
- }  }
+  input{
+    message "Do you want to proceed for production deployment?"
+  }
+    steps {
+                sh 'echo "Deploy into Prod"'
+
+              }
+        }
 stage('Deploy') {
 steps{
 echo "Deploying"
