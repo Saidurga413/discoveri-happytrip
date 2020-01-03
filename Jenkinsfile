@@ -16,7 +16,6 @@ powershell 'java -version'
 powershell 'mvn -version'
 powershell 'mvn clean package'
 archiveArtifacts 'target/*.war'
-
 }
 }
 stage ('Deploy To Prod'){
@@ -25,7 +24,6 @@ stage ('Deploy To Prod'){
   }
     steps {
                 sh 'echo "Deploy into Prod"'
-
               }
         }
 stage('Deploy') {
